@@ -1,0 +1,23 @@
+<idea-plugin>
+    <id>dev.silentmode.toggle</id>
+    <name>Silent Code Mode</name>
+    <vendor>Silent Code Mode</vendor>
+    <description><![CDATA[
+        One-click toggle for automatic completion, parameter popups and documentation.
+        Restores previous settings and persists the mode across restarts.
+        Manual completion remains available. Optional editor hint settings are applied
+        when the installed IDE exposes the relevant API.
+    ]]></description>
+    <depends>com.intellij.modules.lang</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="dev.silentmode.SilentModeStartup"/>
+    </extensions>
+    <actions>
+        <action id="SilentCodeMode.Toggle" class="dev.silentmode.ToggleSilentModeAction"
+                text="Silent Code Mode" description="Toggle automatic editor hints">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="MainToolbarRight" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt F12"/>
+        </action>
+    </actions>
+</idea-plugin>
